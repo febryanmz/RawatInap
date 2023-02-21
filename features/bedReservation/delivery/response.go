@@ -19,7 +19,6 @@ type BedReservationResponse struct {
 	StatusPembayaran string `json:"status_pembayaran"`
 	HospitalID       uint   `json:"hospital_id"`
 	BedID            uint   `json:"bed_id"`
-	// Patient          PatientResponse `json:"patient"`
 }
 
 type PatientResponse struct {

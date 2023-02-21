@@ -58,7 +58,6 @@ type Bed struct {
 	Kelas           string
 	Status          string
 	HospitalID      uint
-	// BedReservation  BedReservation `gorm:"constraint:OnUpdate:CASCADE,OnDelete:CASCADE;"`
 }
 
 type Hospital struct {
@@ -99,10 +98,9 @@ func FromCoreToModel(dataCore bedreservation.BedReservationCore) BedReservation 
 		PatientID:        dataCore.PatientID,
 		BedID:            dataCore.BedID,
 	}
-	return bedresGorm //insert bedreserve from core
+	return bedresGorm
 }
 
-//----------------------BedReserve Aja-------------------------------
 
 func (dataModel *BedReservation) toCore() bedreservation.BedReservationCore {
 	return bedreservation.BedReservationCore{
@@ -120,33 +118,9 @@ func (dataModel *BedReservation) toCore() bedreservation.BedReservationCore {
 		StatusPembayaran: dataModel.StatusPembayaran,
 		HospitalID:       dataModel.HospitalID,
 		BedID:            dataModel.BedID,
-		// Patient: bedreservation.PatientCore{
-		// 	ID:                    dataModel.Patient.ID,
-		// 	NoKk:                  dataModel.Patient.NoKk,
-		// 	Nik:                   dataModel.Patient.Nik,
-		// 	NamaPasien:            dataModel.Patient.NamaPasien,
-		// 	JenisKelamin:          dataModel.Patient.JenisKelamin,
-		// 	TanggalLahir:          dataModel.Patient.TanggalLahir,
-		// 	Usia:                  dataModel.Patient.Usia,
-		// 	NamaWali:              dataModel.Patient.NamaWali,
-		// 	EmailWali:             dataModel.Patient.EmailWali,
-		// 	NoTelponWali:          dataModel.Patient.NoTelponWali,
-		// 	AlamatKtp:             dataModel.Patient.AlamatKtp,
-		// 	ProvinsiKtp:           dataModel.Patient.ProvinsiKtp,
-		// 	KabupatenKotaKtp:      dataModel.Patient.KabupatenKotaKtp,
-		// 	AlamatDomisili:        dataModel.Patient.AlamatDomisili,
-		// 	ProvinsiDomisili:      dataModel.Patient.ProvinsiDomisili,
-		// 	KabupatenKotaDomisili: dataModel.Patient.KabupatenKotaDomisili,
-		// 	NoBpjs:                dataModel.Patient.NoBpjs,
-		// 	KelasBpjs:             dataModel.Patient.KelasBpjs,
-		// 	FotoKtp:               dataModel.Patient.FotoKtp,
-		// 	FotoBpjs:              dataModel.Patient.FotoBpjs,
-		// UserID:                dataModel.Patient.UserID,
-		// },
 	}
 }
 
-// mengubah slice struct model gorm ke slice struct core
 func toCoreList(dataModel []BedReservation) []bedreservation.BedReservationCore {
 	var dataCore []bedreservation.BedReservationCore
 	for _, v := range dataModel {
@@ -155,29 +129,7 @@ func toCoreList(dataModel []BedReservation) []bedreservation.BedReservationCore 
 	return dataCore
 }
 
-// //----------------------Patient Aja-------------------------------
-
 func (dataModel *Patient) toCoreP() bedreservation.PatientCore {
-	// var arrBedReservations []bedreservation.BedReservationCore
-	// for _, v := range dataModel.BedReservation {
-	// 	arrBedReservations = append(arrBedReservations, bedreservation.BedReservationCore{
-	// 		ID:               v.ID,
-	// 		StatusPasien:     v.StatusPasien,
-	// 		BiayaRegistrasi:  v.BiayaRegistrasi,
-	// 		KodeDaftar:       v.KodeDaftar,
-	// 		PaymentMethod:    v.PaymentMethod,
-	// 		LinkPembayaran:   v.LinkPembayaran,
-	// 		VirtualAccount:   v.VirtualAccount,
-	// 		BankPenerima:     v.BankPenerima,
-	// 		TransactionId:    v.TransactionId,
-	// 		WaktuKedaluarsa:  v.WaktuKedaluarsa,
-	// 		QrString:         v.QrString,
-	// 		StatusPembayaran: v.StatusPembayaran,
-	// 		HospitalID:       v.HospitalID,
-	// 		BedID:            v.BedID,
-	// 	})
-	// }
-
 	return bedreservation.PatientCore{
 		ID:                    dataModel.ID,
 		NoKk:                  dataModel.NoKk,
@@ -199,17 +151,5 @@ func (dataModel *Patient) toCoreP() bedreservation.PatientCore {
 		KelasBpjs:             dataModel.KelasBpjs,
 		FotoKtp:               dataModel.FotoKtp,
 		FotoBpjs:              dataModel.FotoBpjs,
-		// BedReservation:       arrBedReservations,
 	}
 }
-
-// // mengubah slice struct model gorm ke slice struct core
-// func toCoreListP(dataModel []Patient) []bedreservation.PatientCore {
-// 	var dataCore []bedreservation.PatientCore
-// 	for , v := range dataModel {
-// 		dataCore = append(dataCore, v.toCoreP())
-// 	}
-// 	return dataCore
-// }
-
-// //---------------------------------------------------------------------------------

@@ -29,9 +29,6 @@ func StaffCoreToStaffRespon(dataCore hospitalstaff.HospitalStaffCore) HospitalSt
 		Peran:        dataCore.Peran,
 		HospitalID:   dataCore.HospitalID,
 		HospitalName: dataCore.HospitalName,
-		// Hospital: HospitalResponse{
-		// 	Nama: dataCore.Hospital.Nama,
-		// },
 	}
 }
 func ListStaffCoreToStaffRespon(dataCore []hospitalstaff.HospitalStaffCore) []HospitalStaffResponse { //data user.core data yang diambil dari entities ke respon struct

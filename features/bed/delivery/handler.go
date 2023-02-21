@@ -28,7 +28,7 @@ func New(service bed.ServiceInterface, e *echo.Echo) {
 // Post
 func (delivery *BedDelivery) Create(c echo.Context) error {
 	bedInput := BedRequest{}
-	errBind := c.Bind(&bedInput) // menangkap data yg dikirim dari req body dan disimpan ke variabel
+	errBind := c.Bind(&bedInput)
 	if errBind != nil {
 		return c.JSON(http.StatusBadRequest, helper.FailedResponse("Error binding data "+errBind.Error()))
 	}
@@ -41,13 +41,13 @@ func (delivery *BedDelivery) Create(c echo.Context) error {
 	return c.JSON(http.StatusCreated, helper.SuccessResponse("success create data"))
 }
 
-// Get All by Hospital_ID
+// Get All
 func (delivery *BedDelivery) GetAll(c echo.Context) error {
-	page := c.QueryParam("page") // input page
+	page := c.QueryParam("page")
 	pagination, _ := strconv.Atoi(page)
 	kelasreq := c.QueryParam("kelas")
 	statusreq := c.QueryParam("status")
-	limit := 10 // set default limit buat pagination
+	limit := 10
 	hospitalId, errBind := strconv.Atoi(c.Param("id"))
 	if errBind != nil {
 		return c.JSON(http.StatusBadRequest, helper.FailedResponse("Error binding data"+errBind.Error()))

@@ -20,7 +20,7 @@ func New(db *gorm.DB) bed.RepositoryInterface {
 // Post
 func (repo *bedRepository) Create(input bed.BedCore) (row int, err error) {
 	bedGorm := FromCore(input)
-	tx := repo.db.Create(&bedGorm) // proses insert data
+	tx := repo.db.Create(&bedGorm)
 	if tx.Error != nil {
 		return -1, tx.Error
 	}

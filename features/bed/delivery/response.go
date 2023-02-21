@@ -9,13 +9,7 @@ type BedResponse struct {
 	Kelas           string `json:"kelas"`
 	Status          string `json:"status"`
 	HospitalID      uint   `json:"hospital_id"`
-	// Hospital        HospitalResponse `json:"hospital"`
 }
-
-// type HospitalResponse struct {
-// 	ID   uint   `json:"id"`
-// 	Nama string `json:"nama"`
-// }
 
 // -----------------Bed--------------------------------
 func FromCore(dataCore bed.BedCore) BedResponse {
@@ -37,20 +31,3 @@ func FromCoreList(dataCore []bed.BedCore) []BedResponse {
 	}
 	return dataResponse
 }
-
-// // -----------------Hospital--------------------------------
-// func fromCore2(dataCore bed.HospitalCore) HospitalResponse {
-// 	return HospitalResponse{
-// 		ID:   dataCore.ID,
-// 		Nama: dataCore.Nama,
-// 	}
-// }
-
-// // data dari core ke response
-// func fromCoreList2(dataCore []bed.HospitalCore) []HospitalResponse {
-// 	var dataResponse []HospitalResponse
-// 	for _, v := range dataCore {
-// 		dataResponse = append(dataResponse, fromCore2(v))
-// 	}
-// 	return dataResponse
-// }

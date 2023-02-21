@@ -23,8 +23,6 @@ func New(Service checkupreservation.ServiceInterface, e *echo.Echo) {
 	e.GET("/practices/:id/reservations", handler.GetByPracticesId, middlewares.JWTMiddleware())
 	e.GET("/reservations/:id", handler.GetByreservationId, middlewares.JWTMiddleware())
 
-	// e.GET("/users/:id", handler.GetById, middlewares.JWTMiddleware())
-
 }
 func (delivery *CheckupDelivery) Create(c echo.Context) error {
 

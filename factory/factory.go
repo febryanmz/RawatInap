@@ -1,7 +1,6 @@
 package factory
 
 import (
-
 	bedDelivery "github.com/KamarRS-App/KamarRS-App/features/bed/delivery"
 	bedRepo "github.com/KamarRS-App/KamarRS-App/features/bed/repository"
 	bedService "github.com/KamarRS-App/KamarRS-App/features/bed/service"
@@ -21,10 +20,6 @@ import (
 	hospitalDelivery "github.com/KamarRS-App/KamarRS-App/features/hospital/delivery"
 	hospitalRepo "github.com/KamarRS-App/KamarRS-App/features/hospital/repository"
 	hospitalService "github.com/KamarRS-App/KamarRS-App/features/hospital/service"
-
-	// 	hospitalStaffRepo "github.com/KamarRS-App/KamarRS-App/features/hospitalstaff/repository"
-	// 	hospitalStaffService "github.com/KamarRS-App/KamarRS-App/features/hospitalstaff/service"
-	// 	hospitalStaffDelivery "github.com/KamarRS-App/KamarRS-App/features/hospitalstaff/delivery"
 
 	patientDelivery "github.com/KamarRS-App/KamarRS-App/features/patient/delivery"
 	patientRepo "github.com/KamarRS-App/KamarRS-App/features/patient/repository"

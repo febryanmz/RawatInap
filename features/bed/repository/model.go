@@ -13,7 +13,6 @@ type Bed struct {
 	Kelas           string
 	Status          string
 	HospitalID      uint
-	// BedReservation  BedReservation `gorm:"constraint:OnUpdate:CASCADE,OnDelete:CASCADE;"`
 }
 
 type Hospital struct {
@@ -56,11 +55,9 @@ func FromCore(dataCore bed.BedCore) Bed {
 		Status:          dataCore.Status,
 		HospitalID:      dataCore.HospitalID,
 	}
-	return bedGorm //insert bed from core
+	return bedGorm
 }
 
-//-------------------------------------------------------
-// Bed aja
 
 func (dataModel *Bed) ToCore() bed.BedCore {
 	return bed.BedCore{
@@ -73,7 +70,6 @@ func (dataModel *Bed) ToCore() bed.BedCore {
 	}
 }
 
-// mengubah slice struct model gorm ke slice struct core
 func ToCoreList(dataModel []Bed) []bed.BedCore {
 	var dataCore []bed.BedCore
 	for _, v := range dataModel {
@@ -81,22 +77,3 @@ func ToCoreList(dataModel []Bed) []bed.BedCore {
 	}
 	return dataCore
 }
-
-//---------------------------------------------------------
-// Hospital Aja
-
-// func (dataModel *Hospital) toHospitalCore() bed.HospitalCore {
-// 	return bed.HospitalCore{
-// 		ID:   dataModel.ID,
-// 		Nama: dataModel.Nama,
-// 	}
-// }
-
-// // mengubah slice struct model gorm ke slice struct core
-// func toCoreList2(dataModel []Hospital) []bed.HospitalCore {
-// 	var dataCore []bed.HospitalCore
-// 	for _, v := range dataModel {
-// 		dataCore = append(dataCore, v.toHospitalCore())
-// 	}
-// 	return dataCore
-// }
